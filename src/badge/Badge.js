@@ -15,11 +15,13 @@ const Badge = props => {
     value,
     theme,
     status,
+    allowFontScaling,
     ...attributes
   } = props;
 
   const element = renderNode(Text, value, {
     style: StyleSheet.flatten([styles.text, textStyle && textStyle]),
+    allowFontScaling: (allowFontScaling === false) ? false : true,
   });
 
   return (
@@ -48,6 +50,7 @@ Badge.propTypes = {
   Component: PropTypes.func,
   theme: PropTypes.object,
   status: PropTypes.oneOf(['primary', 'success', 'warning', 'error']),
+  allowFontScaling: PropTypes.bool,
 };
 
 Badge.defaultProps = {
